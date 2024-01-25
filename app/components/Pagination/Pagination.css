@@ -1,0 +1,38 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+  margin: 30px auto 0;
+  width: calc(100% - 30%);
+  z-index: 101;
+}
+
+.pagination__button {
+  border: 2px solid white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    color: red;
+    border: 2px solid red;
+  }
+}
+
+.pagination-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.pagination-list__item {
+  border: 2px solid white;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  &:hover {
+    color: red;
+    border: 2px solid red;
+  }
+}
