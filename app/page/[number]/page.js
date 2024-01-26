@@ -28,8 +28,8 @@ function Pages({ params }) {
   return (
     <>
       <div className="page">
-        <h2 className="page__header">
-          {page === 1 ? "Первая" : "Вторая"} страница
+        <h2 style={{ color: "rgb(58, 72, 192)" }} className="page__header">
+          {page === 1 ? "Первая страница" : "Вторая страница"}
         </h2>
         <ul className="page__list">
           {items ? (
@@ -49,21 +49,21 @@ function Pages({ params }) {
             })
           ) : (
             <div className="error">
-              <p>"Попробуйте перезагрузить страницу или зайдите позже ..."</p>
+              <h2>Загрузка ...</h2>
             </div>
           )}
         </ul>
-        {items ? (
-          <Pagination
-            page={page}
-            setPage={setPage}
-            Link={Link}
-            pagesLength={pagesLength}
-          />
-        ) : (
-          ""
-        )}
       </div>
+      {items ? (
+        <Pagination
+          page={page}
+          setPage={setPage}
+          Link={Link}
+          pagesLength={pagesLength}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 }

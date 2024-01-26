@@ -3,8 +3,15 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <main>
-        <Link href="/page/1">Перейти к списку постов</Link>
+      <main className="main">
+        <Link
+          className="main-link"
+          href={{
+            pathname: "/page/1",
+          }}
+        >
+          Открыть страницу с постами
+        </Link>
       </main>
     </>
   );

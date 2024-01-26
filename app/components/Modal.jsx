@@ -1,19 +1,16 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
-function Modal({ children, onClose }) {
-  const pathName = usePathname();
+function Modal({ children }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
 
-  console.log(pathName);
-
-  if (pathName === `/`) return null;
-
-  return (
-    <div onClick={onClose} className="modal">
-      {children}
-    </div>
-  );
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+  return <div className="modal">{children}</div>;
 }
 
 export default Modal;
