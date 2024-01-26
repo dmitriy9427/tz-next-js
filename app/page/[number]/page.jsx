@@ -4,16 +4,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Pagination from "../../components/Pagination/Pagination";
 
-export async function generateStaticParams() {
-  return [{ params: [] }];
-}
-
 function Pages({ params }) {
   const [items, setItems] = useState(null);
   const [page, setPage] = useState(+params.number);
   const [pages, setPages] = useState();
 
-  async function fetchdata() {
+  async function generateStaticParams() {
     const res = await fetch(
       `https://taxivoshod.ru/testapi/?w=list&page=${page}`
     );
@@ -24,7 +20,7 @@ function Pages({ params }) {
   }
 
   useEffect(() => {
-    fetchdata();
+    generateStaticParams();
   }, [page]);
 
   const pagesLength = Array.from({ length: pages }, (_, i) => i + 1);

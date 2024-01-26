@@ -30,13 +30,7 @@ function Post({ params }) {
             <div className="post-back"></div>
 
             <div className="post-modal">
-              <Link
-                href={{
-                  pathname: `/page/`,
-                  query: { number: params.number },
-                }}
-                as={`/page/${params.number}`}
-              >
+              <Link href={`/page/${params.number}`}>
                 <svg
                   width="30px"
                   height="30px"
