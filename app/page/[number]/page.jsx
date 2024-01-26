@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Pagination from "../../components/Pagination/Pagination";
 
+export async function generateStaticParams() {
+  return [{ params: [] }];
+}
+
 function Pages({ params }) {
   const [items, setItems] = useState(null);
   const [page, setPage] = useState(+params.number);
