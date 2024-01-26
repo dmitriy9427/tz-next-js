@@ -29,8 +29,8 @@ function Pages({ params }) {
   const pagesLength = Array.from({ length: pages }, (_, i) => i + 1);
 
   return (
-    <>
-      <div className="page">
+    <div className="page">
+      <>
         <h2 style={{ color: "rgb(58, 72, 192)" }} className="page__header">
           {page === 1 ? "Первая страница" : "Вторая страница"}
         </h2>
@@ -56,7 +56,7 @@ function Pages({ params }) {
             </div>
           )}
         </ul>
-      </div>
+      </>
       {items ? (
         <Pagination
           page={page}
@@ -67,7 +67,7 @@ function Pages({ params }) {
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 }
 
