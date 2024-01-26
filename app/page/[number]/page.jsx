@@ -2,12 +2,15 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Pagination from "../../components/Pagination/Pagination";
 
 function Pages({ params }) {
   const [items, setItems] = useState(null);
   const [page, setPage] = useState(+params.number);
   const [pages, setPages] = useState();
+
+  const pathName = usePathname();
 
   async function generateStaticParams() {
     const res = await fetch(
@@ -21,7 +24,7 @@ function Pages({ params }) {
 
   useEffect(() => {
     generateStaticParams();
-  }, [page]);
+  }, [page, pathName]);
 
   const pagesLength = Array.from({ length: pages }, (_, i) => i + 1);
 
