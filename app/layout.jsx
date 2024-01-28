@@ -9,7 +9,6 @@ export const metadata = {
 };
 
 export default function RootLayout(props) {
-  console.log(props);
   return (
     <html lang="ru">
       <body className={gabarito.className}>

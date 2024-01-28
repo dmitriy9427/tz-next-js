@@ -112,6 +112,7 @@ body {
   box-shadow: 8px 8px 10px rgb(137, 138, 147);
   border-radius: 10px;
   color: white;
+  cursor: pointer;
 
   &:hover {
     transform: scale(0.99);
@@ -178,7 +179,7 @@ body {
   top: 150px;
 }
 
-.post-modal a {
+.post-modal svg {
   position: absolute;
   top: -10px;
   right: -40px;

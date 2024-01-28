@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Pagination from "../../components/Pagination/Pagination";
 
 function Pages({ params }) {
@@ -10,9 +9,9 @@ function Pages({ params }) {
   const [page, setPage] = useState(+params.number);
   const [pages, setPages] = useState();
 
-  const pathName = usePathname();
+  const router = useRouter();
 
-  async function generateStaticParams() {
+  async function fetchDataPosts() {
     const res = await fetch(
       `https://taxivoshod.ru/testapi/?w=list&page=${page}`
     );
@@ -23,8 +22,8 @@ function Pages({ params }) {
   }
 
   useEffect(() => {
-    generateStaticParams();
-  }, [page, pathName]);
+    fetchDataPosts();
+  }, []);
 
   const pagesLength = Array.from({ length: pages }, (_, i) => i + 1);
 
@@ -38,16 +37,14 @@ function Pages({ params }) {
           {items ? (
             items.map((item) => {
               return (
-                <Link
+                <li
+                  onClick={() => router.push(`/page/${page}/post/${item.id}`)}
                   className="page__list-item"
                   key={item.id}
-                  href={`/?page=${page}/?post=${item.id}`}
-                  as={`/page/${page}/post/${item.id}`}
-                  passHref
                 >
                   <p>{item.name}</p>
                   <button>Посмотреть</button>
-                </Link>
+                </li>
               );
             })
           ) : (
@@ -58,12 +55,7 @@ function Pages({ params }) {
         </ul>
       </>
       {items ? (
-        <Pagination
-          page={page}
-          setPage={setPage}
-          Link={Link}
-          pagesLength={pagesLength}
-        />
+        <Pagination page={page} setPage={setPage} pagesLength={pagesLength} />
       ) : (
         ""
       )}

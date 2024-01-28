@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Home() {
+function Home() {
   return (
     <>
       <main className="main">
@@ -16,3 +16,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

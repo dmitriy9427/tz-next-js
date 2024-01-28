@@ -1,6 +1,7 @@
 import "./Pagination.css";
+import Link from "next/link";
 
-function Pagination({ page, setPage, Link, pagesLength }) {
+function Pagination({ page, setPage, pagesLength }) {
   return (
     <div className="pagination">
       {page <= 1 ? (
